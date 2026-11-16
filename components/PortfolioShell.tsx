@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { KeyboardEvent as ReactKeyboardEvent } from "react";
-import { portfolio, projects, timeline } from "../data/portfolio";
+import { portfolio, projects, services, timeline } from "../data/portfolio";
 import LiquidChrome from "./LiquidChrome";
 import ProjectVisual from "./ProjectVisual";
 
@@ -61,7 +61,8 @@ export default function PortfolioShell() {
         <nav className={`site-nav ${menuOpen ? "is-open" : ""}`} aria-label="Primary navigation">
           <button type="button" onClick={() => handleNavigation("work")}>Work <span>01</span></button>
           <button type="button" onClick={() => handleNavigation("about")}>About <span>02</span></button>
-          <button type="button" onClick={() => handleNavigation("contact")}>Contact <span>03</span></button>
+          <button type="button" onClick={() => handleNavigation("services")}>Services <span>03</span></button>
+          <button type="button" onClick={() => handleNavigation("contact")}>Contact <span>04</span></button>
         </nav>
         <span className="header-status"><i /> Available for select work</span>
       </header>
@@ -71,6 +72,7 @@ export default function PortfolioShell() {
         <div className="hero-copy">
           <p className="eyebrow">{portfolio.role}</p>
           <h1 id="hero-title"><span>Kzyrell</span><span className="hero-title-indent">Dela Paz</span></h1>
+          <p className="hero-manifesto">Build with good taste.</p>
           <p className="hero-intro">{portfolio.intro}</p>
           <button className="text-link hero-link" type="button" onClick={() => handleNavigation("work")}><span>Explore selected work</span><b>↓</b></button>
         </div>
@@ -95,6 +97,17 @@ export default function PortfolioShell() {
         <div className="discipline-list">
           {portfolio.disciplines.map((discipline, index) => <span key={discipline}><small>0{index + 1}</small>{discipline}</span>)}
         </div>
+        <div className="about-cards">
+          <div className="portrait-card" role="img" aria-label="Abstract profile placeholder ready for a personal portrait">
+            <div className="portrait-grid" /><div className="portrait-orbit" /><span className="portrait-initial">K</span><span className="portrait-label">Replace with portrait / 01</span>
+          </div>
+          <blockquote className="quote-card"><span className="quote-mark">“</span><p>{portfolio.quote}</p><cite>Kzyrell / field notes</cite></blockquote>
+          <div className="about-card-note"><span>What I value</span><strong>Clear thinking<br />over loud effects.</strong><small>Research → design → build → refine</small></div>
+        </div>
+      </section>
+
+      <section className="signal-strip" aria-label="Working principles">
+        <div className="signal-strip-track"><span>RESEARCH</span><b>✳</b><span>DESIGN</span><b>✳</b><span>BUILD</span><b>✳</b><span>REFINE</span><b>✳</b><span>RESEARCH</span><b>✳</b><span>DESIGN</span><b>✳</b><span>BUILD</span><b>✳</b><span>REFINE</span></div>
       </section>
 
       <section className="work section-shell" id="work" aria-labelledby="work-title">
@@ -127,6 +140,12 @@ export default function PortfolioShell() {
             );
           })}
         </div>
+        <div className="work-index">
+          <div className="work-index-heading"><span>Full index</span><span>Hover a project to change the focus</span></div>
+          <div className="work-index-list">
+            {projects.map((project, index) => <button className={`work-index-row ${activeProject === index ? "is-current" : ""}`} type="button" key={project.title} onMouseEnter={() => setActiveProject(index)} onFocus={() => setActiveProject(index)} onClick={() => setActiveProject(index)}><span>{project.number}</span><strong>{project.title}</strong><small>{project.category}</small><i>↗</i></button>)}
+          </div>
+        </div>
       </section>
 
       <section className="archive section-shell" aria-labelledby="archive-title">
@@ -137,8 +156,14 @@ export default function PortfolioShell() {
         </div>
       </section>
 
+      <section className="services section-shell" id="services" aria-labelledby="services-title">
+        <div className="section-heading"><div className="section-index">05 / Capabilities</div><span className="section-caption">The kinds of problems I like to move toward</span></div>
+        <div className="services-layout"><h2 id="services-title">Useful work,<br /><em>carefully made.</em></h2><p>I bring design sensitivity to technical work, and engineering discipline to visual ideas. The best result is a system that feels obvious only after the hard thinking is done.</p></div>
+        <div className="service-list">{services.map((service) => <div className="service-row" key={service.number}><span>{service.number}</span><strong>{service.title}</strong><p>{service.detail}</p><b>↗</b></div>)}</div>
+      </section>
+
       <section className="contact section-shell" id="contact" aria-labelledby="contact-title">
-        <div className="section-index">05 / Contact</div>
+        <div className="section-index">06 / Contact</div>
         <div className="contact-main"><p className="eyebrow">Have a useful problem?</p><h2 id="contact-title">Let&apos;s make<br /><em>something clear.</em></h2><a className="contact-email" href={`mailto:${portfolio.email}`}>{portfolio.email}<span>↗</span></a></div>
         <div className="contact-footer"><span>{portfolio.availability}</span><span>{portfolio.location}</span><div className="social-links"><a href={portfolio.links.github}>GitHub</a><a href={portfolio.links.linkedin}>LinkedIn</a></div></div>
       </section>

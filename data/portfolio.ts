@@ -26,6 +26,7 @@ export const portfolio = {
     linkedin: "#",
   },
   disciplines: ["Web systems", "Edge AI", "Cloud infrastructure", "Product interfaces"],
+  quote: "Every system leaves a trace of the person who thought carefully about it.",
 };
 
 export const projects: Project[] = [
@@ -83,4 +84,27 @@ export const timeline = [
   { year: "2026", label: "Building production web systems", note: "Interfaces, workflows, infrastructure" },
   { year: "2025", label: "Exploring edge AI and IoT", note: "CAIretaker · controlled environments" },
   { year: "2024", label: "Learning by shipping", note: "Web apps · data · cloud fundamentals" },
+];
+
+export const services = [
+  {
+    number: "01",
+    title: "Web systems",
+    detail: "Interfaces and workflows that make complex work easier to understand and operate.",
+  },
+  {
+    number: "02",
+    title: "Edge intelligence",
+    detail: "Practical computer-vision and ML systems that keep sensitive work close to its source.",
+  },
+  {
+    number: "03",
+    title: "Cloud foundations",
+    detail: "Deployable services, storage, and observability shaped around reliability and learning.",
+  },
+  {
+    number: "04",
+    title: "Product direction",
+    detail: "A clear path from rough idea to a useful, legible experience people can return to.",
+  },
 ];
