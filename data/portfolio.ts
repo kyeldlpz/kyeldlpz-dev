@@ -29,6 +29,11 @@ export const portfolio = {
   quote: "Every system leaves a trace of the person who thought carefully about it.",
 };
 
+export const skills = [
+  "TypeScript", "React", "Next.js", "Python", "PostgreSQL", "AWS", "Computer vision", "Figma",
+  "Docker", "Supabase", "Node.js", "Interface systems",
+];
+
 export const projects: Project[] = [
   {
     number: "01",

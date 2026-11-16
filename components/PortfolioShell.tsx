@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { KeyboardEvent as ReactKeyboardEvent } from "react";
-import { portfolio, projects, services, timeline } from "../data/portfolio";
+import type { CSSProperties, KeyboardEvent as ReactKeyboardEvent } from "react";
+import { portfolio, projects, services, skills, timeline } from "../data/portfolio";
 import LiquidChrome from "./LiquidChrome";
 import ProjectVisual from "./ProjectVisual";
 
@@ -110,9 +110,15 @@ export default function PortfolioShell() {
         <div className="signal-strip-track"><span>RESEARCH</span><b>✳</b><span>DESIGN</span><b>✳</b><span>BUILD</span><b>✳</b><span>REFINE</span><b>✳</b><span>RESEARCH</span><b>✳</b><span>DESIGN</span><b>✳</b><span>BUILD</span><b>✳</b><span>REFINE</span></div>
       </section>
 
+      <section className="skills-orbit section-shell" id="skills" aria-labelledby="skills-title">
+        <div className="section-heading"><div className="section-index">03 / Capability map</div><span className="section-caption">Tools that move ideas from question to useful thing</span></div>
+        <div className="skills-layout"><div><h2 id="skills-title">Skills in <em>orbit.</em></h2><p>Languages, frameworks, and tools do not sit in separate boxes here. They revolve around the same job: turning an unusual idea into something useful.</p></div><div className="orbit-stage" role="img" aria-label="Orbiting technology skills"><div className="orbit-ring orbit-ring-one" /><div className="orbit-ring orbit-ring-two" /><div className="orbit-ring orbit-ring-three" /><div className="orbit-globe"><span>AI<br />CODE<br />DATA</span></div>{skills.map((skill, index) => <span className="orbit-skill" style={{ "--skill-index": index } as CSSProperties} key={skill}>{skill}</span>)}</div></div>
+        <div className="proof-band"><span>Proof in practice</span><strong>Edge AI / Product systems / Cloud foundations / Interface craft</strong><b>✳</b></div>
+      </section>
+
       <section className="work section-shell" id="work" aria-labelledby="work-title">
-        <div className="section-heading"><div className="section-index">03 / Selected work</div><span className="section-caption">Systems, experiments, and useful interfaces</span></div>
-        <div className="work-heading"><h2 id="work-title">A few things<br /><em>in motion.</em></h2><span className="project-count">{String(projects.length).padStart(2, "0")} projects</span></div>
+        <div className="section-heading"><div className="section-index">04 / Selected work</div><span className="section-caption">Real systems, seen differently</span></div>
+        <div className="work-heading"><div><h2 id="work-title">The work behind<br /><em>the experiments.</em></h2><p className="work-lede">Selected projects where code, design, and curiosity become useful things.</p></div><span className="project-count">{String(projects.length).padStart(2, "0")} projects</span></div>
         <div className="project-gallery">
           {projects.map((project, index) => {
             const isActive = activeProject === index;
@@ -149,7 +155,7 @@ export default function PortfolioShell() {
       </section>
 
       <section className="archive section-shell" aria-labelledby="archive-title">
-        <div className="section-index">04 / Archive</div>
+        <div className="section-index">05 / Archive</div>
         <div className="archive-layout"><h2 id="archive-title">Still <em>curious.</em></h2><p>Some work becomes a project. Some becomes a note, a prototype, or a better question. This is the short version of the trail so far.</p></div>
         <div className="timeline-list">
           {timeline.map((item) => <div className="timeline-row" key={item.year}><span>{item.year}</span><strong>{item.label}</strong><small>{item.note}</small><b>↗</b></div>)}
@@ -157,14 +163,15 @@ export default function PortfolioShell() {
       </section>
 
       <section className="services section-shell" id="services" aria-labelledby="services-title">
-        <div className="section-heading"><div className="section-index">05 / Capabilities</div><span className="section-caption">The kinds of problems I like to move toward</span></div>
+        <div className="section-heading"><div className="section-index">06 / Capabilities</div><span className="section-caption">The kinds of problems I like to move toward</span></div>
         <div className="services-layout"><h2 id="services-title">Useful work,<br /><em>carefully made.</em></h2><p>I bring design sensitivity to technical work, and engineering discipline to visual ideas. The best result is a system that feels obvious only after the hard thinking is done.</p></div>
         <div className="service-list">{services.map((service) => <div className="service-row" key={service.number}><span>{service.number}</span><strong>{service.title}</strong><p>{service.detail}</p><b>↗</b></div>)}</div>
       </section>
 
       <section className="contact section-shell" id="contact" aria-labelledby="contact-title">
-        <div className="section-index">06 / Contact</div>
+        <div className="section-index">07 / Contact</div>
         <div className="contact-main"><p className="eyebrow">Have a useful problem?</p><h2 id="contact-title">Let&apos;s make<br /><em>something clear.</em></h2><a className="contact-email" href={`mailto:${portfolio.email}`}>{portfolio.email}<span>↗</span></a></div>
+        <div className="contact-intake"><span><b>01 / Think</b> Clear direction</span><span><b>02 / Build</b> Useful systems</span><span><b>03 / Ship</b> Real outcomes</span></div>
         <div className="contact-footer"><span>{portfolio.availability}</span><span>{portfolio.location}</span><div className="social-links"><a href={portfolio.links.github}>GitHub</a><a href={portfolio.links.linkedin}>LinkedIn</a></div></div>
       </section>
 
