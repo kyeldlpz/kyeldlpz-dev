@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties, KeyboardEvent as ReactKeyboardEvent } from "react";
 import { portfolio, projects, services, skills, timeline } from "../data/portfolio";
-import LiquidChrome from "./LiquidChrome";
+import HeroCollage from "./HeroCollage";
 import ProjectVisual from "./ProjectVisual";
 
 function scrollToSection(id: string) {
@@ -71,17 +71,12 @@ export default function PortfolioShell() {
         <div className="hero-meta eyebrow-row"><span>Based in {portfolio.location}</span><span>Portfolio / 2026</span></div>
         <div className="hero-copy">
           <p className="eyebrow">{portfolio.role}</p>
-          <h1 id="hero-title"><span>Kzyrell</span><span className="hero-title-indent">Dela Paz</span></h1>
-          <p className="hero-manifesto">Build with good taste.</p>
+          <h1 id="hero-title"><span>Engineer</span><span className="hero-title-indent">&amp; builder</span></h1>
+          <p className="hero-manifesto">Good systems, better questions.</p>
           <p className="hero-intro">{portfolio.intro}</p>
           <button className="text-link hero-link" type="button" onClick={() => handleNavigation("work")}><span>Explore selected work</span><b>↓</b></button>
         </div>
-        <div className="hero-visual">
-          <LiquidChrome />
-          <div className="hero-orbit-label label-one">WEB / AI / CLOUD</div>
-          <div className="hero-orbit-label label-two">BUILD WITH INTENT</div>
-          <div className="hero-visual-note"><span>01</span><span>Interactive field<br />responds to movement</span></div>
-        </div>
+        <div className="hero-visual"><HeroCollage /></div>
         <div className="hero-footer eyebrow-row"><span>Scroll to investigate</span><span className="scroll-line" /></div>
       </section>
 
